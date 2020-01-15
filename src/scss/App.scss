@@ -445,20 +445,6 @@ input:focus, textarea:focus {
   justify-items: center;
 }
 
-.sectionCButtonOptionGlowAnimation {
-  animation-name: buttonGlow;
-  animation-delay: 2s;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-out;
-}
-
-@keyframes buttonGlow {
-  0% {border: 2px solid $secondary4; box-shadow: 0 0 0 black}
-  50% {border: 2px solid $primaryColor; box-shadow: 0 3px 6px black}
-  100% {border: 2px solid $secondary4; box-shadow: 0 0 0 black}
-}
-
 .sectionCButtonOptionSelected {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.72);
 }
