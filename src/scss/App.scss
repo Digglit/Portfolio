@@ -462,6 +462,7 @@ input:focus, textarea:focus {
 
   .sectionCPhotoContainer {
     margin-bottom: 10px;
+    max-width: 500px;
   }
 
   .sectionCChangePhotoButtonLeft, .sectionCChangePhotoButtonRight {
@@ -498,6 +499,7 @@ input:focus, textarea:focus {
     height: 48vh;
     margin: 10px 0px;
     overflow: hidden;
+    max-width: 500px;
   }
 
   .sectionCButton {
@@ -534,6 +536,19 @@ input:focus, textarea:focus {
 .sectionDHireText {
   padding-top: 30px;
   padding-bottom: 25px;
+}
+
+
+@media (max-width: 1500px) {
+  .sectionDText {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 910px) {
+  .sectionDText {
+    font-size: 24px;
+  }
 }
 
 .sectionDContactContainer {
@@ -603,6 +618,7 @@ input:focus, textarea:focus {
     grid-template-columns: 1fr;
     height: 90%;
     width: 90%;
+    max-width: 500px;
   }
 
   .sectionDContactContainer {
@@ -674,6 +690,7 @@ input:focus, textarea:focus {
 .landingBefore {
   opacity: 0;
   transform: translate(0%, -30%);
+  pointer-events: none;
 }
 
 
