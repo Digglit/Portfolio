@@ -13,6 +13,7 @@ import byteDesignsImage from './assets/ByteDesigns.png'
 import byteDesigns2Image from './assets/ByteDesigns2.png'
 import bigMImage from './assets/BIGmPIZZAredrevised.png'
 import images from './assets/Images'
+import { Link } from 'react-scroll'
 
 class App extends Component {
   constructor(props) {
@@ -181,7 +182,14 @@ class App extends Component {
           landed={this.state.landed}
         />
         <div className='navButtonContainer' style={{ top: this.state.scrollY }}>
-          <button className={`navButton ${!this.state.loaded ? 'landingBefore' : ''}`} onMouseDown={this.printHandler}>Work With Me</button>
+          <Link
+          activeClass="active"
+          to="sectionD"
+          spy={true}
+          smooth={true}
+          offset={20}
+          duration= {1000}
+          ><button className={`navButton ${!this.state.loaded ? 'landingBefore' : ''}`}>Work With Me</button></Link>
         </div>
         <section className='sectionA'>
           <img className='sectionABackgroundImage' src={background} />
@@ -257,12 +265,12 @@ class App extends Component {
             <button className={`sectionCButton ${this.state.projectDisplayed === 0 ? 'sectionCButtonInactive' : ''}`}>Launch Website</button>
           </div>
         </section>
-        <section className='sectionD'>
+        <section className='sectionD' id='sectionD'>
           <div className='sectionDContentContainer'>
             <div className='sectionDTextContainer'>
               <h1>Why hire me?</h1>
-              <p className='sectionDHireText'>I'm a self-starting, go getter who loves to create useful and exciting products. I strive to demonstrate my self driven desires to learn through continued personal education and freelance opportunity with BigM Pizza.</p>
-              <p>I enjoy the journey of learning and aspire to convey visions for brand representation through the web in unique and inspiring ways.</p>
+              <p className='sectionDHireText sectionDText'>I'm a self-starting, go getter who loves to create useful and exciting products. I strive to demonstrate my self driven desires to learn through continued personal education and freelance opportunity with BigM Pizza.</p>
+              <p className='sectionDText'>I enjoy the journey of learning and aspire to convey visions for brand representation through the web in unique and inspiring ways.</p>
             </div>
             <div className='sectionDContactContainer'>
               <h1 className='sectionDContactText'>Contact Me</h1>
