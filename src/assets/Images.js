@@ -1,7 +1,11 @@
 
 
 //CsOptic Pictures
-
+import csoptic1 from './Csoptic/1.png'
+import csoptic2 from './Csoptic/2.png'
+import csoptic3 from './Csoptic/3.png'
+import csoptic4 from './Csoptic/4.png'
+import csoptic5 from './Csoptic/5.png'
 
 
 //BD Pictures
@@ -28,7 +32,11 @@ import bigm4 from './Bigm/PortalPage.png'
 
 let images = [
   [
-
+    { id: 1, src: csoptic1 },
+    { id: 2, src: csoptic2 },
+    { id: 3, src: csoptic3 },
+    { id: 4, src: csoptic4 },
+    { id: 5, src: csoptic5 },
   ],
   [
     { id: 1, src: BD1 },

@@ -14,6 +14,7 @@ import byteDesigns2Image from './assets/ByteDesigns2.png'
 import bigMImage from './assets/BIGmPIZZAredrevised.png'
 import images from './assets/Images'
 import { Link } from 'react-scroll'
+import axios from 'axios'
 
 class App extends Component {
   constructor(props) {
@@ -28,7 +29,13 @@ class App extends Component {
       projectDisplayed: 0,
       currentPhotos: [
         [],
-        [],
+        [
+          images[0][0].src,
+          images[0][1].src,
+          images[0][2].src,
+          images[0][3].src,
+          images[0][4].src,
+        ],
         [
           images[1][0].src,
           images[1][1].src,
@@ -51,7 +58,11 @@ class App extends Component {
         ]
       ],
       currentPhotoDisplayed: 0,
-      mobileMode: window.innerWidth <= 800 ? true : false
+      mobileMode: window.innerWidth <= 800 ? true : false,
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
     }
   }
 
@@ -132,6 +143,21 @@ class App extends Component {
         this.setState({ currentPhotoDisplayed: this.state.currentPhotoDisplayed + 1 })
       }
     }
+  }
+
+  completeContactFormHandler = () => {
+    let messageInfo = {
+      name: this.state.name,
+      email: this.state.email,
+      subject: this.state.subject,
+      message: this.state.message
+    }
+    axios.get(`http://localhost:4000/api/contactForm`, {
+      params: {
+        messageInfo: messageInfo
+      }
+    })
+      .then(() => this.setState({name: '', email: '', subject: '', message: ''}))
   }
 
   render() {
@@ -262,7 +288,7 @@ class App extends Component {
                 <div className={`dot ${this.state.currentPhotoDisplayed === index ? 'dotActive' : ''}`} key={index} onMouseDown={() => this.changeImageHandler(index)} />
               ))}
             </div>
-            <button className={`sectionCButton ${this.state.projectDisplayed === 0 ? 'sectionCButtonInactive' : ''}`}>Launch Website</button>
+            <button className={`sectionCButton ${this.state.projectDisplayed <= 1 ? 'sectionCButtonInactive' : ''}`}>Launch Website</button>
           </div>
         </section>
         <section className='sectionD' id='sectionD'>
@@ -275,12 +301,12 @@ class App extends Component {
             <div className='sectionDContactContainer'>
               <h1 className='sectionDContactText'>Contact Me</h1>
               <form className='sectionDContactForm' autoComplete='off'>
-                <input className='sectionDContactInput' type='text' name='cc' placeholder='Name'></input>
-                <input className='sectionDContactInput' type='text' name='cc' placeholder='Email'></input>
-                <input className='sectionDContactInput' type='text' name='cc' placeholder='Subject'></input>
-                <textarea className='sectionDContactInput' type='text' name='cc' placeholder='Message'></textarea>
+                <input className='sectionDContactInput' type='text' name='cc' placeholder='Name' value={this.state.name} onChange={(e) => this.setState({name: e.target.value})}></input>
+                <input className='sectionDContactInput' type='text' name='cc' placeholder='Email' value={this.state.email} onChange={(e) => this.setState({email: e.target.value})}></input>
+                <input className='sectionDContactInput' type='text' name='cc' placeholder='Subject' value={this.state.subject} onChange={(e) => this.setState({subject: e.target.value})}></input>
+                <textarea className='sectionDContactInput' type='text' name='cc' placeholder='Message' value={this.state.message} onChange={(e) => this.setState({message: e.target.value})}></textarea>
               </form>
-              <button className='sectionDContactButton'>Send -></button>
+              <button className='sectionDContactButton' onMouseDown={this.completeContactFormHandler}>Send -></button>
             </div>
           </div>
         </section>
