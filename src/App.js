@@ -147,7 +147,7 @@ class App extends Component {
 
   completeContactFormHandler = () => {
     let messageInfo = `name: ${this.state.name}, email: ${this.state.email}, subject: ${this.state.subject}, message: ${this.state.message}`
-    axios.get(`http://localhost:4000/api/contactForm`, {
+    axios.get(`http://josephmarella.com:4000/api/contactForm`, {
       params: {
         messageInfo: messageInfo
       }
