@@ -57,6 +57,7 @@ class App extends Component {
           images[3][3].src,
         ]
       ],
+      siteLinks: ['', 'https://digglit.github.io/ByteDesigns', 'https://digglit.github.io/ByteDesigns2', 'https://digglit.github.io/BigM'],
       currentPhotoDisplayed: 0,
       mobileMode: window.innerWidth <= 800 ? true : false,
       name: '',
@@ -152,7 +153,7 @@ class App extends Component {
         messageInfo: messageInfo
       }
     })
-      .then(() => this.setState({name: '', email: '', subject: '', message: ''}))
+      .then(() => this.setState({ name: '', email: '', subject: '', message: '' }))
   }
 
   render() {
@@ -204,12 +205,12 @@ class App extends Component {
         />
         <div className='navButtonContainer' style={{ top: this.state.scrollY }}>
           <Link
-          activeClass="active"
-          to="sectionD"
-          spy={true}
-          smooth={true}
-          offset={20}
-          duration= {1000}
+            activeClass="active"
+            to="sectionD"
+            spy={true}
+            smooth={true}
+            offset={20}
+            duration={1000}
           ><button className={`navButton ${!this.state.loaded ? 'landingBefore' : ''}`}>Work With Me</button></Link>
         </div>
         <section className='sectionA'>
@@ -283,7 +284,7 @@ class App extends Component {
                 <div className={`dot ${this.state.currentPhotoDisplayed === index ? 'dotActive' : ''}`} key={index} onMouseDown={() => this.changeImageHandler(index)} />
               ))}
             </div>
-            <button className={`sectionCButton ${this.state.projectDisplayed <= 1 ? 'sectionCButtonInactive' : ''}`}>Launch Website</button>
+            <a href={this.state.siteLinks[this.state.projectDisplayed - 1]} target='_blank' style={{ justifySelf: 'center', pointerEvents: this.state.projectDisplayed <= 1 ? 'none' : null }}><button className={`sectionCButton ${this.state.projectDisplayed <= 1 ? 'sectionCButtonInactive' : ''}`}>Launch Website</button></a>
           </div>
         </section>
         <section className='sectionD' id='sectionD'>
@@ -296,10 +297,10 @@ class App extends Component {
             <div className='sectionDContactContainer'>
               <h1 className='sectionDContactText'>Contact Me</h1>
               <form className='sectionDContactForm' autoComplete='off'>
-                <input className='sectionDContactInput' type='text' name='cc' placeholder='Name' value={this.state.name} onChange={(e) => this.setState({name: e.target.value})}></input>
-                <input className='sectionDContactInput' type='text' name='cc' placeholder='Email' value={this.state.email} onChange={(e) => this.setState({email: e.target.value})}></input>
-                <input className='sectionDContactInput' type='text' name='cc' placeholder='Subject' value={this.state.subject} onChange={(e) => this.setState({subject: e.target.value})}></input>
-                <textarea className='sectionDContactInput' type='text' name='cc' placeholder='Message' value={this.state.message} onChange={(e) => this.setState({message: e.target.value})}></textarea>
+                <input className='sectionDContactInput' type='text' name='cc' placeholder='Name' value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })}></input>
+                <input className='sectionDContactInput' type='text' name='cc' placeholder='Email' value={this.state.email} onChange={(e) => this.setState({ email: e.target.value })}></input>
+                <input className='sectionDContactInput' type='text' name='cc' placeholder='Subject' value={this.state.subject} onChange={(e) => this.setState({ subject: e.target.value })}></input>
+                <textarea className='sectionDContactInput' type='text' name='cc' placeholder='Message' value={this.state.message} onChange={(e) => this.setState({ message: e.target.value })}></textarea>
               </form>
               <button className='sectionDContactButton' onMouseDown={this.completeContactFormHandler}>Send -></button>
             </div>
